@@ -1,0 +1,92 @@
+.survey-question .row {
+    margin: 15px 0;
+}
+
+.survey-question .text-question {
+    font-size: 18pt;
+    margin: auto;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.survey-question .blue-top-border {
+    min-width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.survey-question .logo {
+    background-image: url('../../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+.survey-question button {
+    height: 3em;
+    width: 13em;
+    margin: 1em auto 0;
+}
+
+.survey-question {
+    min-height: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5pt;
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-question .wrapper {
+    flex: 1 1 100%;
+}
+
+.survey-question .choices {
+    font-size: 16pt;
+    width: 80%;
+}
+
+.survey-question .message {
+    text-align: center;
+    font-size: 15pt;
+}
+
+.survey-question .content {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1em;
+}
+
+.survey-question .choice {
+    margin-top: 0.5em;
+}
+.survey-question .choice:first-child {
+    margin-top: 0;
+}
+
+.survey-question .choice input {
+    margin: 0.3em;
+    float: left;
+}
+
+.survey-question .mess {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+

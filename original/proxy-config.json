@@ -1,0 +1,6 @@
+{
+  "/socs/api": {
+  "target": "http://93.187.72.193/tom/",
+    "secure": false
+  }
+}

@@ -1,0 +1,146 @@
+@import "variables";
+@import "mixins";
+
+.choices-panel {
+    @include list-panel();
+    @include flex-item();
+}
+
+.list-group {
+    @include edit-list();
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+    max-height: 235px;
+    overflow: auto;
+}
+
+.list-group a {
+    min-height: 55px;
+    width: 100%;
+}
+
+.position, .socs-sort {
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1.2em;
+}
+
+.relative-bottom-2 {
+    position: relative;
+    bottom: 2px;
+}
+
+.gu-mirror {
+    position: fixed !important;
+    padding: 2px;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
+}
+
+/* high-performance display:none; helper */
+.gu-hide {
+    left: -9999px !important;
+}
+
+/* added to mirrorContainer (default = body) while dragging */
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* added to the source element while its mirror is dragged */
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+}
+
+.list-group .list-group-item.active, .list-group .list-group-item.active:hover, .gu-mirror {
+    background-color: #f2f2f2;
+    border-color: rgba(204, 204, 204, 1);
+}
+
+.socs-sort .fa-ellipsis-v {
+    color: #cdcdcd;
+}
+
+.choices-panel .choices-icon-panel {
+    color: rgba(1, 85, 158, 1);
+    font-weight: 400;
+    font-style: normal;
+    cursor: default;
+}
+
+.list-group .list-group-item {
+    padding: 0;
+    border-bottom-color: rgba(204, 204, 204, 1);
+}
+
+.socs-sort img {
+    height: 25px;
+}
+
+.list-group-item-label {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    text-align: justify;
+    padding-right: 1em;
+    margin-left: 5px;
+}
+
+.list-group-item-label:before {
+    content: '…';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.list-group-item-label:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+}
+
+.list-group-item.active .list-group-item-label:after, .gu-mirror .list-group-item-label:after {
+    background: #f2f2f2;
+}
+
+.socs-list-item span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.socs-list-item {
+    display: flex;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.container-btn {
+    float: left;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 20pt;
+}
+
+@media (max-width: 447px) {
+    .container-btn {
+        float: none;
+        width: 100%;
+    }
+    .socs-sort-up {
+        padding-left: 0;
+        margin-left: 0;
+    }
+}

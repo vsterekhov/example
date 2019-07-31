@@ -1,0 +1,38 @@
+<ng-template #template>
+    <app-dialog>
+        <ng-container header><span>Сохранить результаты предыдущего голосования или запустить опрос заново?</span></ng-container>
+
+        <ng-container content>
+            <div class="run-survey-mode">
+                <input id="save-results"
+                       type="radio"
+                       class="run-survey-mode__input"
+                       [value]="false"
+                       [(ngModel)]="resetResults">
+                <label for="save-results" class="run-survey-mode__label">
+                    Сохранить полученные результаты и продолжить сбор голосов
+                </label>
+            </div>
+            <div class="run-survey-mode">
+                <input id="reset-results"
+                       type="radio"
+                       class="run-survey-mode__input"
+                       [value]="true"
+                       [(ngModel)]="resetResults">
+                <label for="reset-results" class="run-survey-mode__label">
+                    Удалить результаты прошлого голосования и начать опрос заново
+                </label>
+            </div>
+
+        </ng-container>
+
+        <ng-container footer>
+            <button type="button"
+                    class="rosatom-btn"
+                    (click)="ok()">Запустить опрос</button>
+            <button type="button"
+                    class="rosatom-btn"
+                    (click)="close()">Отмена</button>
+        </ng-container>
+    </app-dialog>
+</ng-template>

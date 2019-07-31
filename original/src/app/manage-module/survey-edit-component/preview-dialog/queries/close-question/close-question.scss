@@ -1,0 +1,69 @@
+.preview-close-question .answer-button {
+    cursor: default;
+    height: 3em;
+    width: 13em;
+    margin: 1em auto 0;
+}
+
+.preview-close-question input[type=radio][disabled], input[type=checkbox][disabled]{
+    cursor: default;
+}
+
+.preview-close-question .answer-button:focus, input:focus {
+    outline: none;
+}
+.preview-close-question .answer-button:hover {
+    background-color: #01559E;
+}
+
+.preview-close-question .row{
+    margin: 15px 0;
+}
+.preview-close-question .choices{
+    width: 80%;
+    font-size: 16pt;
+}
+.preview-close-question .content{
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1em;
+}
+.preview-close-question .title-question{
+    font-size: 18pt;
+    margin: auto;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.preview-close-question .logo {
+    background-image: url('../../../../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+.preview-close-question{
+    height: 80vh;
+    overflow: auto;
+}
+
+.preview-close-question .choice {
+    margin-top: 0.5em;
+}
+.preview-close-question .choice:first-child {
+    margin-top: 0;
+}
+.preview-close-question .choice input {
+    margin: 0.3em;
+    float: left;
+}

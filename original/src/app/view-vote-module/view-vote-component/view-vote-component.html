@@ -1,0 +1,90 @@
+<div class="view-vote">
+    <div class="view-content" [ngStyle]="{fontSize: styleContainer + '%'}">
+        <div class="question-header" *ngIf="!lastSlide">
+            <div #questionTitleContainer class="question-title">
+                {{ hasData() ? getActiveQuestion().question : '' }}
+            </div>
+        </div>
+
+        <div class="view-container" *ngIf="!lastSlide" [ngStyle]="{top: getHeightView()}">
+            <ng-container *ngIf="hasData()">
+                <div *ngIf="isMultiChoices() && hideResults" class="multi-choice">
+                    <div *ngFor="let choice of getActiveQuestionChoices()"
+                         class="multi-choice-item">
+                        <div class=" multi-choice-cell">
+                            <div class="multi-choice-item-icon col-xs-8 col-xs-offset-2">
+                                {{ choice.label }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isWordCloud() && hideResults" class="view-text">
+                    {{getActiveQuestion().settings.multiChoiceAllowed ? 'Введите ваш вариант (один или несколько)' :
+                    'Введите ваш вариант'}}
+                </div>
+                <div *ngIf="hideResults && isOpenEnded()" class="view-text">
+                    Введите ваш вариант
+                </div>
+                <socs-chart
+                    *ngIf="!hideResults"
+                    [question]="getActiveQuestion()"
+                    [action]="chartAction"></socs-chart>
+            </ng-container>
+        </div>
+
+        <div class="view-container" *ngIf="lastSlide" id="lastSlideContent">
+            <div class="thank-you" *ngIf="isVoting()">
+                <div>Опрос продолжается</div>
+                <div class="comment">Вы можете продолжать отвечать на последний вопрос</div>
+            </div>
+            <div class="thank-you" *ngIf="!isVoting()">Опрос завершен! Спасибо за участие.</div>
+        </div>
+    </div>
+
+    <div class="ctrl-panel">
+        <div *ngIf="hasData() && !lastSlide" class="margin-auto left">
+            <span class="fa fa-user"></span>
+            {{ surveyStatistic ? surveyStatistic.respondents : 0 }}
+            <span class="fa fa-comment"></span>
+            {{ surveyStatistic ? surveyStatistic.votes : 0 }}
+        </div>
+
+        <button
+            type="button"
+            class="ctrl-button"
+            [disabled]="prevCtrlDisabled()"
+            (click)="onPrevClick()">< Назад
+        </button>
+
+        <button *ngIf="!lastSlide && isVoting()" type="button" class="ctrl-button" (click)="switchView()"
+            [disabled]="!(surveyStatistic && surveyStatistic.votes)">
+            {{ getSwitchViewTitle() }}
+        </button>
+
+        <button
+            *ngIf="lastSlide && isVoting()"
+            type="button"
+            class="ctrl-button"
+            (click)="onStopVoting()">Завершить опрос
+        </button>
+
+        <button
+            *ngIf="lastSlide && !isVoting()"
+            type="button"
+            class="ctrl-button"
+            (click)="showResults()">Показать результаты
+        </button>
+
+        <button
+            type="button"
+            class="ctrl-button"
+            [disabled]="nextCtrlDisabled()"
+            (click)="onNextClick()">Далее >
+        </button>
+
+        <div *ngIf="hasData() && !lastSlide" class="margin-auto right">
+            <span class="fa fa-file"></span>
+            {{ slideIndex + 1 }} / {{ survey.questions.length }}
+        </div>
+    </div>
+</div>

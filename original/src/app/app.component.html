@@ -1,0 +1,17 @@
+<ng-container *ngIf="isBrowserVersionValid; else browserNotSupported">
+    <app-header></app-header>
+    <app-alert></app-alert>
+
+    <div class="container-fluid" *ngIf="!error">
+        <router-outlet></router-outlet>
+    </div>
+</ng-container>
+
+<ng-template #browserNotSupported>
+    <div class="padding-percent-2">К сожалению, работа сервиса {{serverName}} не поддерживается из данного браузера.<br>
+        Для работы с сервисом используйте соответствующие браузеры:<br>
+        Windows OS и Android: Chrome v51+, Yandex Browser;<br>
+        iOS: Safari, Chrome v51+, Yandex Browser for iPad;<br>
+        macOS: Safari, Chrome v51+, Yandex Browser.
+    </div>
+</ng-template>

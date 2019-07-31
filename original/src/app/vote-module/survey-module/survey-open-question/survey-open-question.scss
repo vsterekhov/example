@@ -1,0 +1,96 @@
+.survey-open-question .answer-field {
+    height: 40vh;
+    width: 70vw;
+    resize: none;
+    border: 1px solid #a9a9a9;
+    padding-left: 5px;
+    font-size: 16pt;
+    padding: 0.3em;
+    min-width: 13em;
+}
+
+.survey-open-question textarea:focus {
+    outline: 0;
+    outline-offset: 0;
+    border: 1px solid #538bbd;
+
+}
+
+.survey-open-question .row {
+    margin: 15px 0;
+}
+
+.survey-open-question .text-question {
+    font-size: 18pt;
+    margin: auto;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.survey-open-question .blue-top-border {
+    min-width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.survey-open-question .logo {
+    background-image: url('../../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+.survey-open-question button {
+    height: 3em;
+    width: 13em;
+    margin: 1em auto 0;
+}
+
+.survey-open-question {
+    min-height: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5pt;
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-open-question .wrapper {
+    flex: 1 1 100%;
+}
+
+.survey-open-question .message {
+    text-align: center;
+    font-size: 15pt;
+}
+
+.survey-open-question .content {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1em
+}
+.survey-open-question .mess {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+

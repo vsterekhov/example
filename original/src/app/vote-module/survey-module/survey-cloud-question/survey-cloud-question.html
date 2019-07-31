@@ -1,0 +1,68 @@
+<div class="survey-cloud-question">
+    <div *ngIf="question" class="wrapper">
+        <ng-container *ngIf="voting.finished; else vote">
+            <div class="row">
+                <div class="logo"></div>
+            </div>
+            <div class="mess">
+                <div class="blue-top-border center-block">
+                    <ng-container *ngIf="voting.success; else voteFailed">
+                        <h3 class="message">Опрос завершен. Спасибо за участие!</h3>
+                    </ng-container>
+                    <ng-template #voteFailed>
+                        <h3 class="message">{{ voting.errorMessage }}</h3>
+                    </ng-template>
+                </div>
+                <button class="rosatom-btn center-block"
+                        (click)="leaveVoting()">Покинуть опрос
+                </button>
+            </div>
+        </ng-container>
+
+        <ng-template #vote>
+            <!--header-->
+            <div class="row">
+                <div class="logo"></div>
+                <div class="text-question" *ngIf="!(!surveyPassed && (showThanks || alreadyAnswered) || surveyPassed)">{{question.question}}</div>
+            </div>
+            <!--content-->
+            <div class="content">
+                <div class="vertically-top" *ngIf="canAnswer()">
+                    <div *ngFor="let i of answersNumber | asArray" class="field center-block">
+                        <input type="text" placeholder="Ваш вариант (30 символов)"
+                               class=""
+                               [(ngModel)]="answers[i]" maxlength="30">
+                    </div>
+                </div>
+            </div>
+            <div class="mess">
+                <div *ngIf="!surveyPassed && (showThanks || alreadyAnswered)" class="center-block blue-top-border">
+                    <h3 class="message">Спасибо, ваш ответ принят.</h3>
+                    <h3 class="message">Ожидайте следующего вопроса.</h3>
+                </div>
+                <div *ngIf="surveyPassed" class="center-block blue-top-border">
+                    <h3 class="message">Спасибо за участие! Вы ответили на все вопросы</h3>
+                </div>
+            </div>
+            <!--footer-->
+            <div>
+                <button class="rosatom-btn center-block"
+                        *ngIf="multiChoiceAllowed && canAnswer()"
+                        (click)="addOneRow()">Добавить вариант</button>
+                <div *ngIf="canAnswer()"
+                     class="row">
+                    <button name="accept-answer"
+                            class="rosatom-btn center-block"
+                            (click)="processVote()"
+                            [disabled]="disableAnswerButton()">Завершить и отправить
+                    </button>
+                </div>
+                <div *ngIf="surveyPassed" class="row">
+                    <button (click)="leaveVoting()" class="rosatom-btn center-block">
+                        Покинуть опрос
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

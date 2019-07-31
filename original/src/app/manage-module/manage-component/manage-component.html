@@ -1,0 +1,173 @@
+<ng-container>
+    <app-export-results-to-email [survey]="selectedSurvey"></app-export-results-to-email>
+    <app-export-results-to-file [survey]="selectedSurvey"></app-export-results-to-file>
+    <app-copy-survey-dialog [item]="selectedSurvey" (copy)="copySurvey($event)"></app-copy-survey-dialog>
+    <app-delete-survey-dialog [item]="selectedSurvey" (delete)="deleteSurvey()"></app-delete-survey-dialog>
+    <app-run-survey-dialog></app-run-survey-dialog>
+</ng-container>
+
+<div class="row" id="manage-comp">
+    <div class="style-table">
+        <app-new-survey-dialog (new)="onCreateSurvey($event)"></app-new-survey-dialog>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: auto;padding-left: 15px;">
+                        <span class="default-cursor">Опрос</span>
+                    </th>
+                    <th style="width: 120px;text-align: center;" [hidden]="sizeSmall || size800">
+                        <span class="default-cursor">Участники</span>
+                    </th>
+                    <th style="width: 120px;" [hidden]="sizeSmall || size800">
+                        <span class="default-cursor">Изменен</span>
+                    </th>
+                    <th style="width: 220px;" [hidden]="sizeSmall" id="threeDots">
+                        <span class="default-cursor">Управление опросом</span>
+                    </th>
+                    <th style="width: 70px;" id="emptyColumn"
+                        [ngStyle]="{'width' : (sizeSmall) ? '75px': '70px' }">
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let survey of surveys" (click)="chooseSurvey(survey);"
+                    [class.selectedRow]="selectedSurvey && selectedSurvey.id === survey.id">
+                    <td style="text-overflow: ellipsis; overflow: hidden;">
+                        <div class="involucre">
+                            <span style="white-space: nowrap;padding-left: 15px;" title="{{survey.name}}"
+                                [ngStyle]="{'font-weight' : (survey.voting) ? '700' : '400' }">
+                                {{survey.name}}
+                            </span>
+                            <div class="col-sm-12">
+                                <span class="manage-menu">Код опроса: {{survey.code}}</span>
+                                <span class="manage-menu" style="width: 105px">
+                                    Вопросов: {{survey.questionsNumber}}
+                                </span>
+                            </div>
+                            <div [hidden]="!(sizeSmall || size800)" class="col-sm-12">
+                                <span class="manage-menu">Участники: {{survey.respondents}}</span>
+                                <span class="manage-menu">Изменен: {{survey.updatedAt | date:'dd.MM.yyyy'}}</span>
+                            </div>
+                            <div [hidden]="!(sizeSmall)" class="col-xs-12" style="padding-bottom: 10px;margin-top: -9px;">
+                                <div [hidden]="survey.voting" class="div-run" (click)="runSurvey(survey)">
+                                    <div class="icon-play">
+                                        <span class="fa fa-play col-xs-1"></span>
+                                    </div>
+                                    <div class="ctrl-text">
+                                        <span class="play-text col-xs-8" title="Запустить опрос">Запустить</span>
+                                    </div>
+                                </div>
+                                <div [hidden]="!(survey.voting)" class="div-stop" (click)="onStopVoting(survey)">
+                                    <div class="icon-stop">
+                                        <span class="fa fa-times col-xs-1"></span>
+                                    </div>
+                                    <div class="ctrl-text">
+                                        <span class="stop-text col-xs-8" title="Остановить опрос">Остановить</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td [hidden]="sizeSmall || size800" class="color-column" style="text-align: center;">
+                        {{survey.respondents}}
+                    </td>
+                    <td [hidden]="sizeSmall || size800" class="color-column">
+                        {{survey.updatedAt | date:'dd.MM.yyyy'}}
+                    </td>
+                    <td class="padding-right-0" [hidden]="sizeSmall">
+                        <div class="involucre">
+                            <div [hidden]="survey.voting || sizeSmall" class="div-run col-xs-12"
+                                 (click)="runSurvey(survey)">
+                                <div class="icon-play">
+                                    <span class="fa fa-play col-xs-1"></span>
+                                </div>
+                                <div class="ctrl-text">
+                                    <span class="play-text col-xs-8" title="Запустить опрос">Запустить</span>
+                                </div>
+                            </div>
+
+                            <div [hidden]="!(survey.voting) || sizeSmall" class="div-stop col-xs-12"
+                                (click)="onStopVoting(survey)">
+                                <div class="icon-stop">
+                                    <span class="fa fa-times col-xs-1"></span>
+                                </div>
+                                <div class="ctrl-text">
+                                    <span class="stop-text col-xs-8" title="Остановить опрос">Остановить</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td [ngStyle]="{'width' : (sizeSmall) ? '75px': '70px' }">
+                        <div class="dropdown-location" dropdown [ngStyle]="{'margin-left' : (sizeSmall) ? '5px': '0px' }">
+                            <div dropdownToggle (click)="onClickDropdown($event,survey.voting,survey.votes)"
+                                 class="rosatom-dropdown-btn dropdown-toggle font-style-italic">
+                                <div class="cell-height align-element-vertically">
+                                    <span>...</span>
+                                </div>
+                            </div>
+                            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right rosatom-dropdown-ul" role="menu"
+                                [ngStyle]="{'margin-top' : size }" id="dropdown">
+                                <li class="cursor-pointer" role="menuitem" [hidden]="!survey.voting">
+                                    <span class="dropdown-item" title="Продолжить опрос" (click)="continueSurvey(survey)">
+                                        Продолжить опрос
+                                    </span>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem">
+                                  <span class="socs-icon-size-19 dropdown-item" title="Редактировать опрос"
+                                      (click)="onEditSurvey()">Редактировать</span>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem">
+                                    <app-qr-modal [surveyCode]="survey.code" [icon]="false"></app-qr-modal>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem">
+                                  <span class="cursor-pointer dropdown-item" title="Посмотреть результат"
+                                      (click)="viewResultSurvey(survey)">Показать результаты</span>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem"
+                                    [hidden]="survey.voting || !survey.votes">
+                                    <a class="dropdown-item" (click)="exportSurveyResultsToFile()">
+                                        Экспорт результатов опроса в CSV
+                                    </a>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem"
+                                    [hidden]="survey.voting || !survey.votes">
+                                    <a class="dropdown-item" (click)="exportSurveyResultsToEmail()">
+                                        Результаты опроса в CSV на E-Mail
+                                    </a>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem">
+                                    <a class="dropdown-item" (click)="onCopySurvey()">
+                                        Копировать
+                                    </a>
+                                </li>
+                                <li class="cursor-pointer" role="menuitem">
+                                    <a class="dropdown-item" (click)="onDeleteSurvey()">
+                                        Удалить
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="survey-statistic-window" *ngIf="isStatisticOpened"
+        [ngStyle]="{left: statisticWindowLeftCoord + 'px', top: statisticWindowTopCoord + 'px'}">
+        <div class="socs-font socs-font-size-20 socs-margins socs-margin-bottom-5">Статистика опроса</div>
+        <div>Всего участников:</div>
+        <div class="socs-font socs-font-size-36 socs-icon-color socs-font-weight-700 socs-margins socs-margin-bottom-5">
+            {{selectedSurvey?.respondents}}
+        </div>
+        <div>Количество голосов:</div>
+        <div class="socs-font socs-font-size-36 socs-icon-color socs-font-weight-700 socs-margins socs-margin-top-bottom-10">
+            {{selectedSurvey?.votes}}
+        </div>
+        <button class="rosatom-btn rosatom-btn-size socs-margins socs-margin-right-none"
+            (click)="isStatisticOpened = false">
+            Закрыть
+        </button>
+    </div>
+</div>

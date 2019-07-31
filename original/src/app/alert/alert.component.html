@@ -1,0 +1,7 @@
+<div class="alert-at-top" *ngIf="alert && (alert.type !== 'vote')">
+  <alert  [type]="alert.type" [dismissible]="true" (onClosed)="closeAlert()">{{alert.message}}</alert>
+</div>
+<div *ngIf="alert && (alert.type == 'vote')">
+    <div class="logo"></div>
+    <div class="message"> Что-то пошло не так. Проверьте интернет соединение и обновите страницу </div>
+</div>

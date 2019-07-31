@@ -1,0 +1,88 @@
+<div class="registration center-block">
+    <ng-container *ngIf="!recovery; else recoveryTemplate">
+        <div class="header">Создание профиля пользователя</div>
+        <form [formGroup]="registrationForm" (submit)="submitForm($event)">
+            <validator-message [form]="registrationForm" [isFormGroup]="true"></validator-message>
+            <div class="container-reg">
+                <label class="rosatom-label">Введите email:</label>
+                <input class="rosatom-input login"
+                       placeholder="username@outlook.com"
+                       type="text"
+                       formControlName="login"
+                       (input)="inputLogin()">
+                <fieldset formGroupName="passwords">
+                    <label class="rosatom-label">Пароль:</label>
+                    <input class="rosatom-input"
+                           autocomplete="off"
+                           placeholder="Не менее 8 символов"
+                           type="password"
+                           formControlName="pwd">
+                    <label class="rosatom-label">Повтор пароля:</label>
+                    <input class="rosatom-input"
+                           autocomplete="off"
+                           placeholder="Подтвердите пароль"
+                           type="password"
+                           formControlName="pwdconfirm">
+                </fieldset>
+                <div class="line">
+                    <input type="checkbox"
+                           value="checkbox"
+                           class="input-check"
+                           (change)="registrationForm.controls['confirm1'].markAsTouched()"
+                           formControlName="confirm1" id="confirm1">
+                    <label class="checkbox-text" for="confirm1">Я даю согласие на обработку персональных данных в соответствии с
+                        регламентом
+                        работы с конфиденциальной информацией</label>
+                </div>
+                <div class="line">
+                    <input type="checkbox"
+                           value="checkbox"
+                           class="input-check"
+                           (change)="registrationForm.controls['confirm2'].markAsTouched()"
+                           formControlName="confirm2" id="confirm2">
+                    <label class="checkbox-text" for="confirm2">Подтверждаю, что введенные данные верны, регистрация производится от
+                        своего
+                        имени</label>
+                </div>
+                <div class="line-btn">
+                    <button class="rosatom-btn reg-btn create"
+                            type="submit"
+                            [disabled]="!registrationForm.valid">Создать
+                    </button>
+                    <button class="rosatom-btn reg-btn cancel"
+                            (click)="cancel()">Отмена
+                    </button>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+    <ng-template #recoveryTemplate>
+        <div class="header">Сброс пароля пользователя</div>
+        <form [formGroup]="registrationForm" (submit)="submitForm($event)">
+            <validator-message [form]="registrationForm" [isFormGroup]="true"></validator-message>
+            <div class="container-reg">
+                <fieldset formGroupName="passwords">
+                    <label class="rosatom-label">Пароль:</label>
+                    <input class="rosatom-input"
+                           placeholder="Не менее 8 символов"
+                           type="password"
+                           formControlName="pwd">
+                    <label class="rosatom-label">Повтор пароля:</label>
+                    <input class="rosatom-input"
+                           placeholder="Подтвердите пароль"
+                           type="password"
+                           formControlName="pwdconfirm">
+                </fieldset>
+                <div class="line-btn">
+                    <button class="rosatom-btn reg-btn"
+                            type="submit"
+                            [disabled]="!registrationForm.valid">Изменить
+                    </button>
+                    <button class="rosatom-btn reg-btn"
+                            (click)="cancel()">Отмена
+                    </button>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

@@ -1,0 +1,74 @@
+<div id="rosatom-header">
+    <ng-container *ngIf="router.url === '/' || router.url.startsWith('/vote'); else elseif1">
+    </ng-container>
+
+    <ng-template #elseif1>
+        <ng-container *ngIf="router.url.startsWith('/manage'); else elseif2">
+            <div class="header">
+                <img src="../socs/assets/icons/icon-greenatom-label-h55.png" alt="RosAtom label">
+            </div>
+
+            <div class="dropdown-location" dropdown *ngIf="checkCurrentUser()">
+                <div dropdownToggle class="rosatom-dropdown-btn dropdown-toggle font-style-italic">
+                    {{currentUser}}
+                </div>
+                <ul *dropdownMenu class="dropdown-menu dropdown-menu-right rosatom-dropdown-ul" role="menu">
+                    <li class="cursor-pointer" role="menuitem">
+                        <a class="dropdown-item" (click)="securityService.logout()">Выход</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right text-right" style="position: absolute;right: 10px;">Поддержка: <a href="mailto:1111@greenatom.ru">1111@greenatom.ru</a><br>
+                +7 (499) 949-29-99, 1111
+            </div>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #elseif2>
+        <ng-container *ngIf="router.url.startsWith('/view-vote'); else else1">
+            <app-export-results-to-file [survey]="survey"></app-export-results-to-file>
+            <div class="header socs-color-white socs-font-weight-400">
+                <img src="../socs/assets/icons/icon-greenatom-label-h55.png" alt="Greenatom label">
+                <div id="header-survey-name-zone" class="survey-name-text margins-top-auto margins-left-180"
+                     (window:resize)="redrawSurveyNameAtResize()">
+                    <div id="survey-name-container"></div>
+                </div>
+
+                <div class="socs-color-white margins-top-auto width-100">код опроса:
+                    <div class="btn-group" dropdown>
+                        <div dropdownToggle class="rosatom-dropdown-btn dropdown-toggle socs-font socs-font-size-28">
+                            {{surveyCode}}
+                        </div>
+                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right rosatom-dropdown-ul" role="menu">
+                            <li class="cursor-pointer" role="menuitem" [hidden]="voting">
+                                <a class="dropdown-item" (click)="exportSurveyResultsToFile()">
+                                    Экспорт результатов опроса в CSV
+                                </a>
+                            </li>
+                            <li class="cursor-pointer" role="menuitem" [hidden]="!voting">
+                                <a class="dropdown-item" (click)="onStopVoting()">
+                                    Завершить опрос
+                                </a>
+                            </li>
+                            <li class="cursor-pointer" role="menuitem">
+                                <app-qr-modal [surveyCode]="surveyCode" [icon]="false"></app-qr-modal>
+                            </li>
+                            <li class="cursor-pointer" role="menuitem">
+                                <a class="dropdown-item" (click)="routeToManage()">Список опросов</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right text-right" style="position: absolute;right: 10px;">Поддержка: <a href="mailto:1111@greenatom.ru">1111@greenatom.ru</a><br>
+                +7 (499) 949-29-99, 1111
+            </div>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #else1>
+        <div class="header">
+            <img src="../socs/assets/icons/icon-greenatom-label-h55.png" alt="RosAtom label">
+        </div>
+    </ng-template>
+</div>

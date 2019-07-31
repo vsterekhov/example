@@ -1,0 +1,31 @@
+@import "variables";
+
+.preview-wrapper {
+    border: 1px solid #01559e;
+    padding: 1px;
+    overflow: hidden;
+    font-size: 20px;
+    text-align: center;
+
+    .question-header {
+        margin-bottom: 10px;
+    }
+
+    .rosatom-btn {
+        display: block;
+        height: 3em;
+        width: 13em;
+        margin: 1em auto 0;
+        cursor: default;
+        font-size: 1.3rem;
+
+        &:active,
+        &:hover {
+            background-color: $socs-primary-color;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+}

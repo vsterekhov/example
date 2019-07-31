@@ -1,0 +1,23 @@
+plugins {
+    id 'com.moowork.node' version '1.2.0'
+}
+
+task clean(type: Delete) {
+    group = 'build'
+    delete 'dist'
+}
+
+task build {
+    group = 'build'
+
+    inputs.dir('src')
+    inputs.dir('node_modules')
+    inputs.files('angular-cli.json', 'package.json', 'tsconfig.json')
+    outputs.dir('dist')
+
+    dependsOn "ngBuild"
+}
+
+task ngBuild(type: NpmTask) {
+    args = ['run', 'build']
+}

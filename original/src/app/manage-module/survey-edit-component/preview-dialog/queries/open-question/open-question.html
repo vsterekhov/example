@@ -1,0 +1,20 @@
+<div class="preview-open-question">
+    <div class="row">
+        <div class="logo"></div>
+        <div class="title-question">{{chosenQuestion.question}}</div>
+    </div>
+    <div class="content">
+        <input readonly placeholder="Ответ (30 символов)">
+    </div>
+    <div class="row">
+        <button class="rosatom-btn center-block answer-button"
+                *ngIf="chosenQuestion.settings.multiChoiceAllowed">Добавить вариант
+        </button>
+        <div class="row">
+            <button name="accept-answer"
+                    class="rosatom-btn center-block answer-button">
+                Завершить и отправить
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="chart">
+    <socs-multi-choices
+        *ngIf="isMultiChoices()"
+        [question]="question"
+        [action]="action"></socs-multi-choices>
+
+    <socs-open-ended
+        *ngIf="isOpenEnded()"
+        [question]="question"
+        [action]="action"></socs-open-ended>
+
+    <socs-svg-word-cloud
+        *ngIf="isWordCloud()"
+        [question]="question"
+        [action]="action"></socs-svg-word-cloud>
+
+</div>

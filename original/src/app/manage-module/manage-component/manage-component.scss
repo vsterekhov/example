@@ -1,0 +1,302 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    border-bottom: 1px solid #cccccc;
+    height: 32px;
+}
+
+table td {
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    text-align: left;
+    color: #01559E;
+}
+
+table tbody tr, table tbody tr td, .cell-height {
+    height: 70px;
+}
+
+table th {
+    border-bottom: 2px solid rgba(121, 121, 121, 1);
+}
+
+table th, table th > a {
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    text-align: left;
+    color: #999999;
+}
+
+table .row-padding-right {
+    padding-right: 5px;
+}
+
+table .selectedRow {
+    background-color: #f2f2f2;
+}
+
+table .width40 {
+    width: 40px;
+    min-width: 40px;
+}
+
+table .width80 {
+    width: 80px;
+    min-width: 80px;
+}
+
+table .width100 {
+    width: 100px;
+    min-width: 100px;
+}
+
+table .width110 {
+    width: 110px;
+    min-width: 110px;
+}
+
+table .width140 {
+    width: 140px;
+    min-width: 140px;
+}
+
+table .width190 {
+    min-width: 190px;
+}
+
+table .word-break {
+    word-break: break-all;
+}
+
+table .padding-right-0 {
+    padding-right: 0;
+}
+
+.survey-statistic-window {
+    position: absolute;
+    display: block;
+
+    height: 260px;
+    width: 240px;
+
+    border: 1px solid rgba(22, 155, 213, 1);
+    border-radius: 3px;
+    background-color: white;
+    text-align: center;
+}
+
+.survey-statistic-window .rosatom-btn-size {
+    width: 180px;
+    height: 40px;
+}
+
+.blue-color {
+    color: #01559e;
+}
+
+#manage-comp .dropdown-location {
+    position: relative;
+    float: right;
+    width: 70px;
+    text-align: center;
+    height: 100%;
+}
+
+#manage-comp .rosatom-dropdown-btn {
+    height: 100%;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+    color: #01559E;
+    cursor: pointer;
+}
+
+#manage-comp .rosatom-dropdown-btn:hover {
+    filter: brightness(150%);
+    background-color: rgb(154, 154, 154);
+}
+
+#manage-comp .rosatom-dropdown-ul {
+    margin-top: -50px;
+    margin-right: 30px;
+    min-width: 60px;
+    border-radius: 0;
+    border: 1px solid #333333;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    padding: 0;
+    box-shadow: none;
+}
+
+#manage-comp .rosatom-dropdown-ul li {
+    border-bottom: 1px solid #333333;
+}
+
+#manage-comp .rosatom-dropdown-ul li:last-child {
+    border-bottom: none;
+}
+
+#manage-comp .rosatom-dropdown-ul > li > a {
+    padding: 5px 10px;
+}
+
+.icon-stop > span {
+    color: white;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.icon-play > span {
+    color: white;
+    padding-left: 12px;
+    padding-top: 5px;
+}
+
+.div-stop:hover > .ctrl-text > span {
+    cursor: pointer;
+    color: #169BD5
+}
+
+.div-run:hover > .ctrl-text > span {
+    cursor: pointer;
+    color: #169BD5;
+}
+
+#manage-comp .rosatom-dropdown-ul > li > span {
+    display: block;
+    padding: 5px 10px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.manage-menu {
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #999999;
+    text-align: left;
+    width: 160px;
+    word-wrap: break-word;
+}
+
+.icon-stop {
+    width: 36px;
+    height: 30px;
+    background: inherit;
+    background-color: rgba(1, 85, 158, 1);
+    border: none;
+    border-radius: 7px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0px;
+    font-size: 23px;
+}
+
+.stop-text {
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    margin-top: -22px;
+    font-size: 20px;
+    color: #01559E;
+}
+
+.color-column {
+    color: #333333 !important;
+}
+
+.cursor-pointer:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+#manage-comp .rosatom-dropdown-ul > li > span:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.button-create {
+    margin-left: 15px;
+    margin-bottom: 14px;
+}
+
+.div-stop {
+    max-width: 165px;
+    float: left;
+    padding-top: 12px;
+}
+
+.style-table {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+}
+
+.default-cursor {
+    cursor: default;
+}
+
+.div-stop:hover > .icon-stop {
+    cursor: pointer;
+    background-color: #169BD5
+}
+
+.ctrl-text {
+    padding: 0px;
+    margin-top: -7px;
+}
+
+.involucre {
+    height: 100%;
+    margin-top: 20px;
+}
+
+.align-element-vertically {
+    transform: translateY(-50%);
+    position: relative;
+    top: 50%
+}
+
+.icon-play {
+    width: 36px;
+    height: 30px;
+    background: inherit;
+    background-color: rgba(0, 176, 80, 1);
+    border: none;
+    border-radius: 7px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.play-text {
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    margin-top: -22px;
+    font-size: 20px;
+    color: #01559E;
+}
+
+.div-run {
+    max-width: 165px;
+    float: left;
+    padding-top: 12px;
+}
+
+.div-run:hover > .icon-play {
+    cursor: pointer;
+    background-color: #00CC00;
+}

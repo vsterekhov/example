@@ -1,0 +1,490 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "variables";
+@import "mixins";
+
+html {
+    font-size: $root-min-font-size;
+
+    @media (min-width: 320px) {
+        font-size: $root-min-font-size + 2;
+    }
+
+    @media (min-width: 450px) {
+        font-size: $root-min-font-size + 3;
+    }
+
+    @media (min-width: 768px) {
+        font-size: $root-min-font-size + 4;
+    }
+
+    @media (min-width: 1280px) {
+        font-size: $root-min-font-size + 5;
+    }
+
+    @media (min-width: 1920px) {
+        font-size: $root-min-font-size + 6;
+    }
+}
+
+.socs-spinner {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    border: 0.4rem solid #f3f3f3;
+    border-top: 0.4rem solid #84c0f1;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+@mixin rosatom-btn {
+    width: 130px;
+    padding: 0.4em 0.8em;
+    background: inherit;
+    background-color: $socs-primary-color;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-family: $socs-font-family;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16pt;
+    color: white;
+    margin-right: 1rem;
+
+    &:active,
+    &:hover {
+        background-color: $socs-primary-color-light;
+    }
+
+    &:disabled {
+        background-color: $socs-disabled-color;
+        cursor: default;
+    }
+
+    &:active {
+        box-shadow: inset -4px 4px 10px rgba(0,0,0,.125);
+    }
+
+    &:focus, &:active:focus {
+        outline: none;
+    }
+}
+
+.rosatom-btn {
+    @include rosatom-btn;
+}
+
+.rosatom-btn--new-survey {
+    @include rosatom-btn;
+    width: auto;
+    margin-left: 15px;
+    margin-bottom: 14px;
+}
+
+.rosatom-btn--wa {
+    @include rosatom-btn;
+    width: auto;
+    //margin-left: 15px;
+    //margin-bottom: 14px;
+}
+
+.input-control {
+  width: 100%;
+}
+
+.question-settings-panel {
+    padding: 15px;
+    @include panel($question-settings-panel-height) {
+        .panel-body {
+            .content {
+                @include flex-column();
+            }
+        }
+    }
+}
+
+.flex-row-survey-setting {
+  @include flex-row();
+  align-items: center;
+}
+
+.flex-column {
+  @include flex-column();
+}
+
+.flex-column-center {
+  @include flex-column-center();
+}
+
+.flex-row {
+    @include flex-row();
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@mixin socs-icon {
+  color: $socs-icon-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $socs-icon-color-hover;
+  }
+
+  &.socs-icon-size-17 {
+    font-size: 17px;
+  }
+
+  &.socs-icon-size-18 {
+    font-size: 18px;
+  }
+
+  &.socs-icon-size-19 {
+    font-size: 19px;
+  }
+}
+
+.socs-icon {
+  @include socs-icon();
+}
+
+.socs-sort {
+    margin-left: auto;
+    position: relative;
+}
+
+.choices-icon-panel button, .socs-sort-up, .socs-sort-down {
+    line-height: .75em;
+    vertical-align: sub;
+    margin: 0 0.5vw;
+    color: rgba(1, 85, 158, 1);
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.choices-icon-panel button{
+    vertical-align: -5px;
+    height: 20pt;
+}
+
+.socs-sort-up, .socs-sort-down {
+    font-size: 26px;
+}
+
+.choices-icon-panel button:focus, .socs-sort-up:focus, .socs-sort-down:focus {
+    outline: none;
+}
+
+.choices-icon-panel button:hover, .socs-sort-up:hover, .socs-sort-down:hover {
+    color: rgba(22, 155, 213, 1);
+}
+
+.choices-icon-panel button:disabled, .socs-sort-up:disabled, .socs-sort-down:disabled,
+.choices-icon-panel button:disabled:hover, .socs-sort-up:disabled:hover, .socs-sort-down:disabled:hover {
+    color: #bcbcbc;
+    cursor: default;
+}
+
+// TODO
+.preview-modal {
+    width: 75%;
+    height: auto;
+}
+
+.preview-modal .modal-content {
+    height: 100%;
+}
+
+.socs-font {
+    @include socs-font-family-sans();
+    color: $socs-color-dark;
+    font-size: 16px;
+
+    &.socs-font-size-14 {
+        font-size: 14px;
+    }
+
+    &.socs-font-size-20 {
+        font-size: 20px;
+    }
+
+    &.socs-font-size-28 {
+        font-size: 28px;
+    }
+
+    &.socs-font-size-36 {
+        font-size: 36px;
+    }
+
+    &.socs-font-size-17pt {
+        font-size: 17pt;
+    }
+}
+
+.font-style-italic {
+    font-style: $socs-font-style-italic;
+}
+
+.socs-font-weight-400 {
+    font-weight: $socs-font-weight-400;
+}
+
+.socs-font-weight-700 {
+    font-weight: $socs-font-weight-700;
+}
+
+.socs-color-white {
+    color: $socs-color-white;
+}
+
+.socs-icon-color {
+    color: $socs-icon-color;
+}
+
+.socs-margins {
+
+    &.socs-margin-right-none {
+        margin-right: 0;
+    }
+
+    &.socs-margin-top-bottom-10 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    &.socs-margin-bottom-5 {
+        margin-bottom: 5px;
+    }
+}
+
+.qr-modal.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.qr-modal.modal-dialog .modal-content {
+  min-height: 100%;
+  max-height: 100%;
+  border-radius: 0;
+}
+.qr-modal.modal-dialog .modal-content .modal-header {
+  padding: 0;
+  border-bottom: none;
+  @include flex-row-center();
+}
+.qr-modal.modal-dialog .modal-content .modal-body {
+  width: 100%;
+  position: absolute;
+  top: $socs-qr-modal-header-height;
+  bottom: $socs-qr-modal-footer-height;
+  text-align: center;
+}
+.qr-modal.modal-dialog .modal-content .modal-body .for-qr-code {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.qr-modal.modal-dialog .modal-content .modal-body .qr-code {
+  max-width: 90%;
+  max-height: 90%;
+  margin: 0 auto;
+  vertical-align: middle;
+  display: inline;
+
+  @media screen and (orientation: portrait) {
+    max-width: 90%;
+  }
+
+  @media screen and (orientation: landscape) {
+    max-height: 90%;
+  }
+}
+.qr-modal.modal-dialog .modal-content .modal-footer {
+  width: 100%;
+  height: $socs-qr-modal-footer-height;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  border-top: none;
+  @include flex-row-center();
+}
+.rosatom-input {
+    width: 340px;
+    height: 23px;
+    font-family: 'PT Sans Bold', 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    text-decoration: none;
+    color: #01559E;
+    text-align: left;
+}
+
+.rosatom-label {
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    text-align: right;
+    padding-right: 4px;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #bcbcbc;
+}
+
+.dialog-header-font {
+    font-family: $socs-font-family;
+    color: $socs-color-dark;
+    font-size: 1.25em;
+}
+
+.form-group label {
+    font-family: $socs-font-family;
+    color: $socs-color-dark;
+    font-size: 1.25em;
+    font-weight: $socs-font-weight-700;
+}
+
+.size-question {
+    font-size: 21pt;
+}
+
+#browser-not-supported .padding-percent-3 {
+    padding: 3%;
+}
+
+.edit-survey-font-big {
+    font-size: 18px;
+    font-family: $socs-font-family; // TODO
+}
+
+.edit-survey-font-small {
+    font-size: 16px;
+    font-family: $socs-font-family; // TODO
+}
+
+.edit-survey-icon {
+    font-size: 24px;
+    line-height: .75em;
+    vertical-align: text-top;
+    margin: 0 10px;
+    color: $socs-primary-color;
+}
+
+.edit-survey-icon:hover {
+    color: $socs-primary-color-light;
+}
+
+@media (min-width: 1024px) {
+    .edit-survey-font-big {
+        font-size: 18px;
+    }
+    .edit-survey-font-small {
+        font-size: 16px;
+    }
+    .edit-survey-icon {
+        font-size: 26px;
+    }
+    .socs-sort-up, .socs-sort-down {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .edit-survey-font-big {
+        font-size: 18px;
+    }
+    .edit-survey-font-small {
+        font-size: 16px;
+    }
+
+    .edit-survey-icon {
+        font-size: 28px;
+    }
+
+    .socs-sort-up, .socs-sort-down {
+        font-size: 32px;
+    }
+
+}
+
+@media (max-width: 670px) {
+    .edit-survey-icon, .socs-sort-up, .socs-sort-down {
+        margin: 0 0.5vw;
+    }
+}
+
+.return-to-surveys {
+    color: $socs-primary-color;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    padding-right: 25px;
+    float: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    &:hover {
+        color: $socs-primary-color-light;
+    }
+
+    .text-btn {
+        margin: auto auto auto 5px;
+    }
+}
+
+.add-item {
+    color: $socs-primary-color;
+    margin-right: 10px;
+    cursor: pointer;
+    float: left;
+    padding-bottom: 5px;
+
+    &.disabled,
+    &:hover.disabled {
+        pointer-events: auto;
+        color: #bcbcbc;
+        cursor: default;
+    }
+
+    .edit-survey-icon {
+        margin: 0;
+        color: inherit;
+    }
+
+    .socs-font {
+        color: $socs-primary-color;
+    }
+
+    &:hover,
+    &:hover .socs-font {
+        color: $socs-primary-color-light;
+    }
+
+    @media (max-width: 670px) {
+        margin-right: 0.5vw;
+    }
+    @media (max-width: 315px) {
+        width: 100%;
+        float: none;
+    }
+}

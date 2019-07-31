@@ -1,0 +1,21 @@
+<span class="row-padding-right cursor-pointer" (click)="openModal(template)" [hidden]="!icon">
+    <img src="../../../socs/assets/icons/icon-qr.png" alt="QR">
+</span>
+
+<li [hidden]="icon" (click)="openModal(template)">
+    <span class="qr-title dropdown-item" [hidden]="icon">Показать QR</span>
+</li>
+
+<ng-template #template>
+    <div class="modal-header">
+        <div class="modal-title">
+            Введите код <strong>{{surveyCode}}</strong> на странице <strong>{{hostname}}</strong> или отсканируйте QR-код
+        </div>
+    </div>
+    <div class="modal-body">
+        <qrcode [qrdata]="qrCode" class="qr" [size]=size [level]="'M'"></qrcode>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="rosatom-btn" (click)="closeModal()">Закрыть</button>
+    </div>
+</ng-template>

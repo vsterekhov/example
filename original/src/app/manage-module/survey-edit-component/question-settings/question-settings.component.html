@@ -1,0 +1,116 @@
+<div class="question-settings-panel panel">
+    <div class="content">
+        <div *ngIf="!question; else settings" class="edit-survey-font-big">Добавьте новый вопрос или выберите из
+            списка
+        </div>
+        <ng-template #settings>
+            <div class="row">
+                <div class="col-xs-12 question-panel">
+                    <div class="nav edit-survey-font-big left">Вопрос {{question.position+1}}
+                        ({{questionTypes.getDescription(question.type).replace(" вопрос", "")}})
+                    </div>
+                    <div class="nav right">
+                        <app-preview-dialog [question]="question" [result]="true" [voting]="true"></app-preview-dialog>
+                        <app-delete-question-dialog [item]="question" (delete)="deleteQuestion()"></app-delete-question-dialog>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="question-value">
+                        <textarea
+                            class="input-control socs-font edit-survey-font-big"
+                            maxlength="250"
+                            rows="3"
+                            [pattern]="surveyService.nameValidationRegex.source"
+                            required
+                            [(ngModel)]="question.question"
+                            #questionInput="ngModel"
+                            (input)="surveyService.nameValidationEvent.next({isQuestionNameValid: questionInput.valid})"
+                            [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                </div>
+            </div>
+            <app-choices *ngIf="showAdditionalSettings()" [question]="question"></app-choices>
+            <div class="row" *ngIf="questionTypes.isMultiChoices(question.type)">
+                <div class="col-xs-12 edit-survey-font-small">
+                    <div class="multi-choice-allowed-label">Выбор вариантов ответа:</div>
+                    <div class="multi-choice-allowed-value"
+                         (click)="toggleMultiChoiceAllowed()">
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="question.settings.multiChoiceAllowed"
+                            [ngModelOptions]="{standalone: true}"> Разрешить выбирать несколько вариантов
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="questionTypes.isMultiChoices(question.type)">
+                <div class="col-xs-12 edit-survey-font-small">
+                    <div class="multi-choice-allowed-label">Вопросы без ответа:</div>
+                    <div class="multi-choice-allowed-value"
+                         (click)="toggleShowZeroAnswers()">
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="question.settings.showzero"
+                            [ngModelOptions]="{standalone: true}"> Показывать
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="questionTypes.isWordCloud(question.type)">
+                <div class="col-xs-12">
+                    <div (click)="toggleMultiChoiceAllowed()">
+                        <input
+                            class="edit-survey-font-small"
+                            type="checkbox"
+                            [(ngModel)]="question.settings.multiChoiceAllowed"
+                            [ngModelOptions]="{standalone: true}"> Разрешить аудитории ввести более одного варианта
+                        ответа
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="questionTypes.isOpenEnded(question.type)">
+                <div class="col-xs-12">
+                    <div class="max-choices ">
+                        <div class="max-choices-enable"
+                             (click)="toggleMaxChoicesEnable()">
+                            <input class="edit-survey-font-small"
+                                   type="checkbox"
+                                   [(ngModel)]="question.settings.maxChoicesEnable"
+                                   [ngModelOptions]="{standalone: true}"> Максимум вопросов от участника:
+                        </div>
+                        <div class="max-choices-value">
+                            <input
+                                #maxChoicesInput
+                                class="input-control edit-survey-font-small"
+                                [disabled]="!question.settings.maxChoicesEnable"
+                                [(ngModel)]="question.settings.maxChoices"
+                                (ngModelChange)="onMaxChoicesChange($event)"
+                                [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="showAdditionalSettings()">
+                <div class="col-xs-12">
+                    <div class="show-result">
+                        <span class="show-result-label edit-survey-font-small">Отображение результатов:</span>
+                        <span class="show-result-value edit-survey-font-small">
+                            <div class="chart-type-item"
+                                  [ngClass]="{'selected': isChartSelected(chartTypes.BAR_CHART.propName)}"
+                                  (click)="onSelectChart(chartTypes.BAR_CHART.propName)">
+                                <span class="fa fa-bar-chart fa-lg"></span>
+                                Гистограмма
+                            </div>
+                            <div class="chart-type-item"
+                                  [ngClass]="{'selected': isChartSelected(chartTypes.PIE_CHART.propName)}"
+                                  (click)="onSelectChart(chartTypes.PIE_CHART.propName)">
+                                <span class="fa fa-pie-chart"></span>
+                                Круговая диаграмма
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

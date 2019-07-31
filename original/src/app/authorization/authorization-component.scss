@@ -1,0 +1,154 @@
+@import "mixins";
+
+.login {
+    max-width: 390px;
+    min-width: 200px;
+    height: auto;
+    border: 1px solid rgba(203, 225, 241, 1);
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.login .log-btn {
+    width: 163px;
+}
+
+.line-btn .log-btn {
+    width: 45%;
+    margin: 5px auto;
+}
+
+.login .line {
+    padding-left: 4px;
+    margin-left: 20%;
+    width: calc(75% + 4px);
+    display: inline-block;
+    font-family: 'PT Sans Bold Italic', 'PT Sans';
+    font-weight: 700;
+    font-style: italic;
+    color: #01559E;
+}
+
+.recovery {
+    text-align: end;
+    width: 65%;
+}
+
+.reg {
+    width: 35%;
+}
+
+.link {
+    float: left;
+    padding: 10px 0;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: rgb(22, 155, 213);
+    border-color: rgb(22, 155, 213);
+    float: left;
+}
+
+#login::placeholder, #password::placeholder {
+    font-weight: 300;
+}
+
+#login {
+    text-transform: lowercase;
+}
+
+.login .recovery-confirm-form {
+    padding: 15px;
+
+    .recovery-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .recovery-email {
+        height: 18px;
+        font-family: $socs-font-family;
+        font-weight: 700;
+        color: #01559E;
+    }
+}
+
+.rosatom-input {
+    width: 75%;
+    min-width: 180px;
+}
+
+.rosatom-label {
+    width: 20%;
+}
+
+@media (max-width: 400px) {
+    .login .line {
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+    .rosatom-input {
+        width: 100%;
+    }
+    .rosatom-label {
+        width: 100%;
+        text-align: start;
+    }
+}
+
+.line-btn {
+    padding: 10px 0;
+    display: flex;
+    font-family: 'PT Sans Bold Italic', 'PT Sans';
+    font-weight: 700;
+    font-style: italic;
+    color: #01559E;
+}
+
+@media (max-width: 417px) {
+    .line-btn {
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 330px) {
+    .reg, .recovery {
+        width: 100%;
+        float: none;
+        text-align: start;
+    }
+    .reg {
+        padding-bottom: 0;
+    }
+    .login .log-btn {
+        width: 100%;
+    }
+    .line-btn {
+        width: 100%;
+        display: block;
+    }
+}
+
+.rosatom-btn {
+    margin-right: 0;
+}
+
+.form-login {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.line-btn .recovery-btn {
+    margin-left: 0;
+}
+
+.line-btn .cancel-btn {
+    margin-right: 0;
+}
+
+
+

@@ -1,0 +1,57 @@
+<ng-template #templateVoting>
+    <app-dialog [footer]="false">
+        <ng-container header>
+            {{ votingTitle }}
+            <button type="button"
+                    class="fa fa-close"
+                    aria-label="Close"
+                    title="Закрыть"
+                    (click)="close()">
+            </button>
+        </ng-container>
+        <ng-container content>
+            <div class="preview-wrapper">
+                    <open-question *ngIf="questionTypes.isWordCloud(question.type)"
+                                   [chosenQuestion]="question"></open-question>
+                    <close-question *ngIf="questionTypes.isMultiChoices(question.type)"
+                                    [chosenQuestion]="question"></close-question>
+                    <questions-and-comments *ngIf="questionTypes.isOpenEnded(question.type)"
+                                            [chosenQuestion]="question"></questions-and-comments>
+            </div>
+        </ng-container>
+    </app-dialog>
+</ng-template>
+
+<ng-template #templateResult>
+    <app-dialog [footer]="false">
+        <ng-container header>
+            {{ resultTitle }}
+            <button type="button"
+                    class="fa fa-close"
+                    aria-label="Close"
+                    title="Закрыть"
+                    (click)="close()">
+            </button>
+        </ng-container>
+        <ng-container content>
+            <div class="preview-wrapper">
+                <div class="question-header size-question">{{previewQuestion.question}}</div>
+                <div style="height: 60vh;">
+                    <socs-chart [question]="previewQuestion"></socs-chart>
+                </div>
+            </div>
+        </ng-container>
+    </app-dialog>
+</ng-template>
+
+<span *ngIf="voting"
+      class="fa fa-list-alt socs-icon edit-survey-icon"
+      [class.disabled]="!question"
+      [title]="votingTitle"
+      (click)="open(templateVoting)"></span>
+
+<span *ngIf="result"
+      class="fa fa-bar-chart socs-icon edit-survey-icon"
+      [class.disabled]="!question"
+      [title]="resultTitle"
+      (click)="open(templateResult)"></span>

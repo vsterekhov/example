@@ -1,0 +1,29 @@
+<div class="">
+    <div class="vote">
+        <div class="row">
+            <div class="logo"></div>
+            <div class="text">Введите код для участия в опросе</div>
+        </div>
+        <form [formGroup]="voteForm" (submit)="onSubmit()">
+            <input placeholder="00000"
+                   type="text"
+                   maxlength="5"
+                   class="center-block"
+                   formControlName="voteCode"
+                   (keydown)="reset()"
+                   style="padding: 0;"
+                   (keyup)="printOnlyNumbers($event)"/>
+            <div class="error">
+                <div class="error-msg" *ngIf="errorMessage.length !== 0">
+                    {{errorMessage}}
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" [disabled]="!voteForm.valid"
+                        class="rosatom-btn center-block">
+                    Начать опрос
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

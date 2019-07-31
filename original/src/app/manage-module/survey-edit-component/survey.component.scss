@@ -1,0 +1,221 @@
+@import "variables";
+@import "mixins";
+@import "styles";
+
+input:focus {
+    box-shadow: 0 0 5px 0 $socs-primary-color;
+    outline: none;
+    border: 2px solid rgba(210,210,213,0);
+}
+
+.survey-edit {
+    margin-top: $survey-edit-margin-top;
+    min-width: 270px;
+}
+
+.survey-edit .survey-type-radio {
+    margin-left: 15px;
+}
+
+.list-group {
+    @include edit-list();
+}
+
+.survey-settings-panel {
+    @include panel($survey-settings-panel-height, $survey-settings-panel-margin) {
+        .panel-body {
+            border: none;
+            padding: 0;
+        }
+    }
+}
+
+.question-icon,
+.question-value {
+    margin-left: 5px;
+}
+
+@mixin rosatom-btn-survey-setting() {
+    display: inline-block;
+    width: 140px;
+}
+
+.rosatom-btn-survey-setting-ok {
+    @include rosatom-btn-survey-setting();
+}
+
+.rosatom-btn-survey-setting-cancel {
+    @include rosatom-btn-survey-setting();
+    margin-right: 0;
+}
+
+.column-question-settings {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.dummy-column {
+    padding-left: 0;
+    margin-left: -1px;
+}
+
+.survey-edit-panel .row {
+    margin-top: 1rem;
+}
+
+.survey-edit-content .list-group {
+    padding: 0;
+}
+
+.survey-edit-content .list {
+    width: 40%;
+    padding: 0;
+    float: left;
+    overflow: auto;
+    @include panel($question-settings-panel-height+2px) {
+        .panel-body {
+            .content {
+                @include flex-column();
+            }
+        }
+    }
+    border-top: 1px solid rgba(204, 204, 204, 1);
+    border-bottom: 1px solid rgba(204, 204, 204, 1);
+}
+
+.survey-edit-content .properties {
+    width: 60%;
+    border: 1px solid rgba(204, 204, 204, 1);
+    float: left;
+}
+
+.survey-edit-content {
+    margin: 10px -15px 15px 15px;
+
+}
+
+.survey-edit .survey-edit-panel {
+    padding-left: 40px;
+}
+
+@media (max-width: 670px) {
+    .survey-edit-content .properties, .survey-edit-content .list {
+        width: 100%;
+        border: none;
+        border-top: 2px solid rgba(204, 204, 204, 1);
+        float: none;
+        height: initial;
+        max-height: 45vh;
+    }
+    .survey-edit .survey-edit-panel {
+        padding-left: 15px;
+    }
+
+}
+
+.socs-list-item {
+    display: flex;
+    font-family: 'PT Sans Regular', 'PT Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    width: 100%;
+    min-height: 70px;
+    font-size: 16px;
+    padding: 15px;
+}
+
+.list-group .list-group-item {
+    padding: 0;
+    border-bottom-color: rgba(204, 204, 204, 1);
+    overflow: hidden;
+}
+
+.list-group .list-group-item.active, .list-group .list-group-item.active:hover, .gu-mirror {
+    background-color: #f2f2f2;
+    border-color: rgba(204, 204, 204, 1);
+}
+
+.socs-list-item span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.socs-list-item .fa-ellipsis-v {
+    color: #cdcdcd;
+}
+
+.gu-mirror {
+    position: fixed !important;
+    padding: 2px;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
+}
+
+/* high-performance display:none; helper */
+.gu-hide {
+    left: -9999px !important;
+}
+
+/* added to mirrorContainer (default = body) while dragging */
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* added to the source element while its mirror is dragged */
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+}
+
+.socs-sort img {
+    padding-right: 0;
+    height: 25px;
+}
+
+.list-group-item-label {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    text-align: justify;
+    padding-right: 2em;
+}
+
+.list-group-item-label:before {
+    content: '…';
+    position: absolute;
+    right: 1em;
+    bottom: 0;
+}
+
+.list-group-item-label:after {
+    content: "";
+    position: absolute;
+    right: 1em;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+}
+
+.gu-mirror .list-group-item-label:after, .list-group-item.active .list-group-item-label:after {
+    background: #f2f2f2;
+}
+@media (max-width: 315px) {
+    .socs-sort-up {
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+
+.width-open-ended {
+    width: 21.3px;
+}

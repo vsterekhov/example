@@ -1,0 +1,58 @@
+$borderRed: 1px solid red;
+
+$panelBodyBorder: 1px solid #d9edf7;
+$itemUnderline: 1px solid #169bd5;
+$itemSelectedBackgroundColor: #e4e4e4;
+
+$main-header-height: 55px;
+
+$survey-edit-margin-top: 0; //0vh;
+$survey-edit-panel-heading-height: 25px; //4vh;
+
+$survey-settings-panel-height: 100px; //25vh;
+$survey-settings-panel-margin: 10px 0 0 0; //0 0 15px 0; //0 0 3vh 0;
+
+$survey-structure-panel-height: 360px; //60vh;
+$survey-structure-panel-padding: 10px; //10px 0 0 10px;
+
+$question-settings-panel-height: 600px; //60vh;
+
+$socs-font-color-light: rgba(255, 255, 255, 1); //#FFFFFF;
+$socs-font-color-dark: rgba(102, 102, 102, 1); //#666666;
+
+$socs-default-color: rgba(228, 228, 228, 1); //#E4E4E4;
+
+$socs-primary-color: rgba(1, 85, 158, 1); //#01559E;
+$socs-primary-color-light: rgba(22, 155, 213, 1); //#169BD5;
+
+$socs-disabled-color: rgba(210, 210, 213, 1); //#D2D2D5
+
+$socs-danger-color: rgba(153, 0, 0, 1); //#990000;
+$socs-danger-color-light: rgba(220, 0, 0, 1); //#DC0000;
+
+$socs-icon-color: #01559e;
+$socs-icon-color-hover: #69bbe3; //#169bd5;
+
+$socs-color-dark: #333333;
+$socs-color-white: white;
+
+$socs-font-family: 'PT Sans Regular', 'PT Sans', 'Helvetica Neue';
+$socs-font-style: normal;
+$socs-font-style-italic: italic;
+
+$socs-font-weight-400: 400;
+$socs-font-weight-700: 700;
+
+$socs-margin-bottom-5: 5px;
+$socs-margin-bottom-10: 10px;
+$socs-margin-bottom-20: 20px;
+
+$socs-qr-modal-header-height: 50px;
+$socs-qr-modal-footer-height: 100px;
+
+$modal-dialog-border-radius: 3px;
+$modal-dialog-width: 75vw;
+$modal-dialog-min-width: 230px;
+$modal-dialog-max-width: 650px;
+
+$root-min-font-size: 11px;

@@ -1,0 +1,37 @@
+<div class="choices-panel">
+    <div class="choices-icon-panel socs-font">
+        <app-new-choice-dialog [choices]="question.choices" (select)="onSelectChoice($event)"></app-new-choice-dialog>
+        <div class="container-btn">
+            <button [disabled]="!selectedChoice || (selectedChoice.position === 0)"
+                    class="fa fa-caret-up socs-sort-up"
+                    (click)="onPositionUp(selectedChoice)"></button>
+            <button [disabled]="!selectedChoice || (selectedChoice.position === question.choices.length - 1)"
+                    class="fa fa-caret-down socs-sort-down"
+                    (click)="onPositionDown(selectedChoice)"></button>
+            <app-edit-choice-dialog [item]="selectedChoice"></app-edit-choice-dialog>
+            <button class="fa fa-trash-o socs-icon relative-bottom-2 edit-survey-icon" title="Удалить ответ"
+                    (click)="onDelete()"
+                    [disabled]="!selectedChoice"></button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="list-group" dragula="choices" [(dragulaModel)]="question.choices">
+            <a [title]="choice.label"
+               [ngClass]="{'active': selectedChoice === choice}"
+               style="cursor: pointer"
+               class="list-group-item flex-row socs-font socs-font-size-14 sortable-list-item"
+               (click)="onSelectChoice(choice)"
+               *ngFor="let choice of this.surveyService.order(question.choices)">
+                <div class="socs-list-item">
+                    <span class="position socs-font edit-survey-font-small">
+                        {{ choice.position + 1 }}
+                    </span>
+                    <span class="list-group-item-label socs-font edit-survey-font-small">{{ choice.label }}</span>
+                    <span class="socs-sort">
+                       <img src="../socs/assets/icons/icon-anchor.png">
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

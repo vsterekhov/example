@@ -1,0 +1,50 @@
+<ng-template #template>
+    <app-dialog>
+        <ng-container header>Добавление вопроса</ng-container>
+
+        <ng-container content>
+            <div class="form-group">
+                <label for="question-input">Заголовок вопроса</label>
+                <input id="question-input"
+                       type="text"
+                       maxlength="250"
+                       class="form-control"
+                       [pattern]="surveyService.nameValidationRegex.source"
+                       [placeholder]="'Задайте вопрос'"
+                       [(ngModel)]="question.question"
+                       #name="ngModel"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="question-type-select">Тип вопроса:</label>
+                <select class="form-control" id="question-type-select" [(ngModel)]="question.type">
+                    <option *ngFor="let questionType of questionTypes"
+                            [value]="questionType.propName">
+                        {{ questionType.description }}
+                    </option>
+                </select>
+            </div>
+        </ng-container>
+
+        <ng-container footer>
+            <button class="rosatom-btn"
+                    type="button"
+                    (click)="ok()"
+                    [disabled]="name.invalid">Создать
+            </button>
+            <button class="rosatom-btn"
+                    type="button"
+                    (click)="close()">Отмена
+            </button>
+        </ng-container>
+    </app-dialog>
+</ng-template>
+
+
+<div class="add-item"
+     [class.disabled]="!surveyService.surveyValidation.isQuestionNameValid"
+     title="Добавить вопрос"
+     (click)="open(template)">
+    <i class="fa fa-plus edit-survey-icon"></i>
+    <span class="edit-survey-font-big">Добавить вопрос ...</span>
+</div>

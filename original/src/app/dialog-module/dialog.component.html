@@ -1,0 +1,13 @@
+<div class="socs-dialog__body">
+    <div class="socs-dialog__header">
+        <ng-content select="[header]"></ng-content>
+    </div>
+
+    <div class="socs-dialog__content" *ngIf="content">
+        <ng-content select="[content]"></ng-content>
+    </div>
+
+    <div class="socs-dialog__footer" *ngIf="footer">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+</div>

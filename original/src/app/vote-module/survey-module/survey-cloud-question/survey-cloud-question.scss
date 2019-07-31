@@ -1,0 +1,97 @@
+.survey-cloud-question .row {
+    margin: 15px 0;
+}
+
+.survey-cloud-question .text-question {
+    font-size: 18pt;
+    margin: auto;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.survey-cloud-question .logo {
+    background-image: url('../../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+.survey-cloud-question .blue-top-border {
+    min-width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.survey-cloud-question button {
+    height: 3em;
+    width: 13em;
+    margin: 1em auto 0;
+}
+
+.survey-cloud-question {
+    min-height: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5pt;
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-cloud-question .wrapper {
+    flex: 1 1 100%;
+}
+
+.survey-cloud-question .field {
+    margin-bottom: 5px;
+}
+
+.survey-cloud-question input {
+    width: 80vw;
+    min-width: 13em;
+    margin-right: 5px;
+    height: 48px;
+    padding-left: 5px;
+    border: 1px solid #cbe1f1;
+    outline: 0;
+    outline-offset: 0;
+    font-size: 16pt;
+    padding: 0.3em;
+}
+
+.survey-cloud-question .message {
+    text-align: center;
+    font-size: 15pt;
+}
+
+.survey-cloud-question .content {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    align-self: center;
+}
+
+.survey-cloud-question .mess {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.survey-cloud-question .vertically-top {
+    align-self: flex-start;
+}

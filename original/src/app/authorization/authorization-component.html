@@ -1,0 +1,51 @@
+<div class="login center-block">
+    <form *ngIf="!showRecoveryConfirm" [formGroup]="authorizationForm" (submit)="onSubmit()">
+        <validator-message [form]="authorizationForm" [isFormGroup]="true"></validator-message>
+        <div class="center-block form-login">
+            <label class="rosatom-label">Логин:</label>
+            <input type="text"
+                   id="login"
+                   formControlName="login"
+                   autocomplete="off"
+                   placeholder="username@outlook.com"
+                   class="rosatom-input"
+                   (input)="input()"/>
+            <label class="rosatom-label">Пароль:</label>
+            <input type="password"
+                   id="password"
+                   autocomplete="on"
+                   formControlName="password"
+                   class="rosatom-input"
+                   placeholder="password"
+                   (input)="input()"/>
+            <div class="line">
+                <div class="link reg" (click)="toReg()">регистрация</div>
+                <div class="link recovery" [ngClass]="{disabled: login.invalid}"
+                     (click)="checkUsername()">восстановить пароль
+                </div>
+            </div>
+            <div class="line">
+                <button class="center-block rosatom-btn log-btn"
+                        type="submit"
+                        [disabled]="!authorizationForm.valid">Войти
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <form class="recovery-confirm-form" *ngIf="showRecoveryConfirm" (submit)="sendRecoveryEmail()">
+        <div class="recovery-header">Сброс пароля</div>
+        <div style="margin-bottom: 15px">Выслать инструкцию по восстановлению пароля на e-mail:</div>
+        <div style="margin-bottom: 30px" class="recovery-email">{{ login.value }}</div>
+        <div class="line-btn">
+            <button class="rosatom-btn log-btn recovery-btn"
+                    type="submit">Да
+            </button>
+            <button class="rosatom-btn log-btn cancel-btn"
+                    type="button"
+                    (click)="showRecoveryConfirm = false">Отмена
+            </button>
+        </div>
+    </form>
+</div>
+

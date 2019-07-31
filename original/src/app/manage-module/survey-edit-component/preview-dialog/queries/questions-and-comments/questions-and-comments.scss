@@ -1,0 +1,78 @@
+.preview-questions-and-comments .answer-button {
+    cursor: default;
+    height: 3em;
+    width: 13em;
+    margin: 1em auto 0;
+}
+
+.preview-questions-and-comments textarea {
+    resize: none;
+    cursor: default;
+}
+
+.preview-questions-and-comments textarea:focus, input:focus {
+    outline: none;
+}
+
+.preview-questions-and-comments .answer-button:hover {
+    background-color: #01559E;
+}
+
+.preview-questions-and-comments .answer-button:focus, input:focus {
+    outline: none;
+}
+
+.preview-questions-and-comments .row {
+    margin: 15px 0;
+}
+
+.preview-questions-and-comments .title-question {
+    font-size: 18pt;
+    margin: auto;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.preview-questions-and-comments .logo {
+    background-image: url('../../../../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+.preview-questions-and-comments {
+    height: 80vh;
+    overflow: auto;
+}
+
+.preview-questions-and-comments .content {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1em;
+
+    .row {
+        width: 97%;
+    }
+}
+
+.preview-questions-and-comments .answer-field {
+    height: 40vh;
+    width: 100%;
+    resize: none;
+    border: 1.4px solid #a9a9a9;
+    font-size: 16pt;
+    padding: 0.3em;
+    min-width: 13em;
+}

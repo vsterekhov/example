@@ -1,0 +1,96 @@
+.vote {
+    border-radius: 3px;
+    padding: 15px;
+    max-width: 450px;
+    min-width: 250px;
+    margin: auto;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.vote .logo {
+    background-image: url('../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+.vote .error-msg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    word-wrap: break-word;
+    margin-top: 5px;
+}
+
+.vote .error {
+    min-height: 2em;
+}
+
+.vote button {
+    width: 249px;
+    height: 40px;
+    padding: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.vote .text {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18pt;
+    line-height: 1;
+    color: #000000;
+    text-align: center;
+    width: 75%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.vote input {
+    width: 188pt;
+    text-align: center;
+    font-size: 45pt;
+    color: #01559e;
+}
+
+.vote input:focus {
+    outline: 0;
+    outline-offset: 0;
+    border: 1px solid #538bbd;
+}
+
+.vote .logo {
+    background-image: url('../../../assets/icons/icon-greenatom-label-h55.png');
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: -15px;
+}
+
+::-webkit-input-placeholder {
+    padding: 0;
+    margin: 0;
+}
+::-moz-placeholder {
+    padding: 0;
+    margin: 0;
+}
+:-ms-input-placeholder {
+    padding: 0;
+    margin: 0;
+}
+:-moz-placeholder {
+    padding: 0;
+    margin: 0;
+}

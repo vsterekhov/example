@@ -1,0 +1,26 @@
+<ng-template #template>
+    <app-dialog>
+        <ng-container header>Удаление вопроса</ng-container>
+
+        <ng-container content>
+            <div>На данный вопрос имеются ответы.</div>
+            <div>Вы действительно хотите его удалить?</div>
+        </ng-container>
+
+        <ng-container footer>
+            <button class="rosatom-btn"
+                    type="button"
+                    (click)="ok()">Удалить
+            </button>
+            <button class="rosatom-btn"
+                    type="button"
+                    (click)="close()">Отмена
+            </button>
+        </ng-container>
+    </app-dialog>
+</ng-template>
+
+<span class="fa fa-trash-o socs-icon edit-survey-icon"
+      title="Удалить вопрос"
+      [class.disabled]="!item || !surveyService.surveyValidation.isQuestionNameValid"
+      (click)="open(template)"></span>

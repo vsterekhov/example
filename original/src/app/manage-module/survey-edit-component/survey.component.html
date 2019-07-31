@@ -1,0 +1,69 @@
+<div class="socs-spinner" *ngIf="waitSurvey"></div>
+
+<div class="survey-edit" *ngIf="!waitSurvey && survey">
+    <div class="align-items-center survey-edit-panel">
+        <div class="row">
+            <div class="col-xs-12">
+                <app-return-to-library-dialog [change]="change" (return)="onReturnToLibrary()"></app-return-to-library-dialog>
+                <button class="rosatom-btn--wa edit-survey-font-big" (click)="onSave()"
+                        [disabled]="!surveyService.surveyValidation.isSurveyNameValid || !surveyService.surveyValidation.isQuestionNameValid || !change">
+                    Сохранить опрос
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <input id="surveyName" type="text" class="input-control socs-font edit-survey-font-big" maxlength="150"
+                       [pattern]="surveyService.nameValidationRegex.source"
+                       required #surveyInput="ngModel"
+                       (input)="surveyService.nameValidationEvent.next({isSurveyNameValid: surveyInput.valid})"
+                       [(ngModel)]="survey.name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <app-new-question-dialog (new)="onNewQuestion($event)"></app-new-question-dialog>
+                <button [disabled]="!selectedQuestion || (selectedQuestion.position === 0)"
+                    class="fa fa-caret-up socs-sort-up"
+                    (click)="onPositionUp(selectedQuestion)"></button>
+                <button [disabled]="!selectedQuestion || (selectedQuestion.position === this.survey.questions.length - 1)"
+                    class="fa fa-caret-down socs-sort-down"
+                    (click)="onPositionDown(selectedQuestion)"></button>
+            </div>
+        </div>
+    </div>
+    <div class="row survey-edit-content">
+        <div class="list">
+            <div class="content">
+                <div class="list-group" dragula="questions" [(dragulaModel)]="survey.questions">
+                    <a [ngClass]="{'active': selectedQuestion === question}"
+                       class="list-group-item flex-row socs-font edit-survey-font-small sortable-list-item"
+                       (click)="onSelectQuestion(question)" [title]="question.question"
+                       *ngFor="let question of surveyService.order(survey.questions)">
+                        <div class="socs-list-item">
+                            <span class="socs-font edit-survey-font-small">{{ question.position + 1 }}</span>
+                            <span class="list-group-item-icon" style="margin-left: 15px;">
+                                    <span class="fa fa-list-ul fa-lg socs-icon-color"
+                                          *ngIf="question.type === questionTypes.MULTI_CHOICES.propName && !question.settings.multiChoiceAllowed"></span>
+                                    <span class="fa fa-th-list fa-lg socs-icon-color"
+                                          *ngIf="question.type === questionTypes.MULTI_CHOICES.propName && question.settings.multiChoiceAllowed"></span>
+                                    <span class="fa fa-commenting-o fa-lg socs-icon-color"
+                                          *ngIf="question.type === questionTypes.WORD_CLOUD.propName"></span>
+                                    <span class="fa fa-question fa-lg socs-icon-color width-open-ended"
+                                          *ngIf="question.type === questionTypes.OPEN_ENDED.propName"></span>
+                                </span>
+                            <span class="list-group-item-label socs-font edit-survey-font-small"
+                                  style="margin-left: 15px;">{{ question.question }}</span>
+                            <span class="socs-sort">
+                                <img src="../socs/assets/icons/icon-anchor.png">
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="properties">
+            <app-question-settings [question]="selectedQuestion"></app-question-settings>
+        </div>
+    </div>
+</div>
